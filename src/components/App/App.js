@@ -8,6 +8,8 @@ import './App.scss';
 
 // Sticky Controls - make controls attached to or in the same static space as the progress bar. Will always be in view. Make the background gradient out along the bottom so page text scrolls behind it.
 
+// add space between mobile arrow buttons
+
 // reverse toggle and label location? keep center vert rule?
 
 // add third or fourth
