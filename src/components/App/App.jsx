@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Switch from '../Switch/Switch';
 import CardCarousel from '../CardCarousel/CardCarousel';
 import './App.scss';
@@ -135,6 +135,7 @@ import './App.scss';
 const App = () => {
 	const [dataAccessibilityTheme, setDataAccessibilityTheme] = useState('');
 	const [dataTheme, setDataTheme] = useState('🤖');
+	const documentBodyRef = useRef();
 
 	useEffect(() => {
 		document.body.setAttribute('data-accessibility-theme', dataAccessibilityTheme);
@@ -157,7 +158,7 @@ const App = () => {
 	};
 
 	return (
-		<div className='app'>
+		<div className='app' ref={documentBodyRef}>
 			<div className='wrapper'>
 				<div className='controls'>
 					<Switch label='Optimize for Dyslexia' onChange={() => handleAccessibilityTheme()} />
