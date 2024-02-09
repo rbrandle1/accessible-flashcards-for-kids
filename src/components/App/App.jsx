@@ -4,7 +4,7 @@ import CardCarousel from '../CardCarousel/CardCarousel';
 import './App.scss';
 
 //ToDo:
-// add mask gradient to controls
+// colors jolt when switching on the gradient. Can a reverse mask be used?
 // tinker with card vertical alignment on desktop... not quite the right spacing on top.
 
 // Sticky Controls - make controls attached to or in the same static space as the progress bar. Will always be in view. Make the background gradient out along the bottom so page text scrolls behind it.
