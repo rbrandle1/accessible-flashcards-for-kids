@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import Switch from '../Switch/Switch';
 import CardCarousel from '../CardCarousel/CardCarousel';
 import './App.scss';
@@ -107,6 +107,7 @@ import './App.scss';
 /**
  * PROBLEM SOLVING
  * Started with a grid. Not ideal for dyslexia because there is so much competing information. Decided to show one at a time with a carousel to help focus on 1 problem at a time and reducing distraction.
+ * Decided to create a global level design system to apply to any app that could potentially be used within the DOM instead of applying global variables like data-themes from within the React app itself. There are pros and cons to both options, but my approach was to handle this at the top level of the DOM on the body tag instead of using a useRef within the app.
  * Typography. Unkempt vs Bangers... Unkempt too much like the "For Dummies" books from the 90's.
  * Color theming. Utilized native html emoji colors to create well balanced, well contrasted and easy to read color themes.
  * Token variable naming conventions... attempted to map the raw color names to a --theme-accent-primary/1/2/3 but found that confusing and unnecessary for this particular project. In a more advanced system naming primary/secondary/accents would be more appropriate.
@@ -135,7 +136,6 @@ import './App.scss';
 const App = () => {
 	const [dataAccessibilityTheme, setDataAccessibilityTheme] = useState('');
 	const [dataTheme, setDataTheme] = useState('🤖');
-	const documentBodyRef = useRef();
 
 	useEffect(() => {
 		document.body.setAttribute('data-accessibility-theme', dataAccessibilityTheme);
@@ -158,7 +158,7 @@ const App = () => {
 	};
 
 	return (
-		<div className='app' ref={documentBodyRef}>
+		<div className='app'>
 			<div className='wrapper'>
 				<div className='controls'>
 					<Switch label='Optimize for Dyslexia' onChange={() => handleAccessibilityTheme()} />
