@@ -1,13 +1,24 @@
 @use '../../styles/utils';
 
 .app {
+	--app-bar-height: 4vh;
+	--app-header-height: calc(var(--app-bar-height) + var(--app-controls-height, 0px));
+
+	@media screen and (max-width: 499px) {
+		--app-controls-height: 80px;
+	}
+
+	@media screen and (min-width: 500px) and (max-width: 1023px) {
+		--app-controls-height: 128px;
+	}
+
 	display: grid;
 	height: 100vh;
 }
 
 .wrapper {
 	display: block;
-	margin-top: var(--app-bar-height);
+	margin-top: var(--app-header-height);
 
 	@media screen and (max-width: 499px) {
 		padding-bottom: var(--space-base);
@@ -35,7 +46,6 @@
 		--flow-space: var(--space-md);
 
 		@include utils.max-width;
-		margin-top: var(--space-3xl);
 		text-align: center;
 	}
 
@@ -152,17 +162,6 @@ footer {
 // ===============================
 
 .controls {
-	// --control-mask-width: 4vw;
-	// --control-mask: linear-gradient(
-	// 	to top,
-	// 	red,
-	// 	red 0,
-	// 	black calc(var(--control-mask-width) * 2),
-	// 	black calc(100% - calc(var(--control-mask-width) * 2)),
-	// 	red 100%,
-	// 	red
-	// );
-
 	font-size: var(--text-base);
 	display: grid;
 	grid-column: -1 / 1;
@@ -171,26 +170,12 @@ footer {
 	justify-content: space-between;
 	gap: var(--space-base);
 	position: fixed;
-	background-color: var(--theme-color-body-bg);
-	// margin-bottom: var(--space-base);
+	top: var(--app-bar-height);
 	padding: var(--space-base) clamp(var(--space-base), 4vw, var(--space-lg)) var(--space-lg);
 	width: 100%;
-	// box-shadow: 0px 1px 3px var(--color-black-70);
+	height: var(--app-controls-height);
 	z-index: 1;
-
-	// -webkit-mask-image: var(--control-mask);
-	// mask-image: var(--control-mask);
-	// overflow: hidden;
-	// background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
-	/* adjust the colors and transparency values as needed */
-	// background: linear-gradient(to bottom, red 0%, red 80%, transparent 80%, transparent 100%);
-
-	// -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 1)), to(rgba(0, 0, 0, 0)));
-	// mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0) 50%);
-
-	// background: rgb(0, 0, 0);
-	// background: linear-gradient(0deg, transparent, var(--theme-color-body-bg) 11%);
-
+	background-color: var(--theme-color-body-bg);
 	background: linear-gradient(0deg, transparent, var(--theme-color-body-bg) 25%);
 
 	@media screen and (min-width: 500px) {

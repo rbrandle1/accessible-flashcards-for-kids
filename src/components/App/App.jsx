@@ -4,7 +4,6 @@ import CardCarousel from '../CardCarousel/CardCarousel';
 import './App.scss';
 
 //ToDo:
-// colors jolt when switching on the gradient. Can a reverse mask be used?
 // tinker with card vertical alignment on desktop... not quite the right spacing on top.
 
 // Sticky Controls - make controls attached to or in the same static space as the progress bar. Will always be in view. Make the background gradient out along the bottom so page text scrolls behind it.
@@ -18,6 +17,8 @@ import './App.scss';
 // in addition... maybe this space could be used to fade in/out messages with the controls?
 
 // MOBILE OPTIMIZATIONS:
+// Remove some of the fluid type sizing, like for icons? Is this causing bloat? Notice when resizing.
+
 // OPTIMIZE MOBILE maybe turn off opacity on mobile as well? make simple?
 
 // OPTIMIZE MOBILE use devtools to investigate if I have too heavy css operations causing repaints, etc... maybe just render the integer grid for each individual card instead of all of them? Ask tim? ISSUES ONLY OCCUR WITH DYSLEXIA... IT HAS TO BE BECAUSE OF THE ICONGRID
