@@ -10,6 +10,8 @@ import './App.scss';
 
 // add space between mobile arrow buttons
 
+// fix typography on left side desktop. Almost extends to viewport edge. Investgate why usage of grid and container queries might push typography outside the grid.
+
 // reverse toggle and label location? keep center vert rule?
 
 // add third or fourth
