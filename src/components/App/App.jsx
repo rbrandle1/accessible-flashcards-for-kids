@@ -4,44 +4,36 @@ import CardCarousel from '../CardCarousel/CardCarousel';
 import './App.scss';
 
 //ToDo:
-
 // add space between mobile arrow buttons
 
-// fix typography on left side desktop. Almost extends to viewport edge. Investgate why usage of grid and container queries might push typography outside the grid.
+// update layout to change to desktop at 1200 instead of 1024
 
-// reverse toggle and label location? keep center vert rule?
+// fix typography on left side desktop. Almost extends to viewport edge. Investgate why usage of grid and container queries might push typography outside the grid. Also, dyslexia font on mobile is too large and almost hits viewport edge... likely related
 
-// add third or fourth
+// add 2 more themes
 
-// in addition... maybe this space could be used to fade in/out messages with the controls?
-
-// MOBILE OPTIMIZATIONS:
-// Remove some of the fluid type sizing, like for icons? Is this causing bloat? Notice when resizing.
-
-// OPTIMIZE MOBILE maybe turn off opacity on mobile as well? make simple?
-
-// OPTIMIZE MOBILE use devtools to investigate if I have too heavy css operations causing repaints, etc... maybe just render the integer grid for each individual card instead of all of them? Ask tim? ISSUES ONLY OCCUR WITH DYSLEXIA... IT HAS TO BE BECAUSE OF THE ICONGRID
-
-// MESSAGING: design where occurs. tune up progress success messaging. glitches back and fourth... maybe round the number up with ceiling to make it exact, or set to 10.5? Could also add a callback timer function to wait a second before applying. too fluid at the moment, the text bounces back and forth between text. Also animate this text in and have it disappear again. Don't want to disappear too quickly... kids can't read that fast, can't be like subtitles, need time to process the words.
-
-// use has() all siblings besides the current slide to animate opacity and scale? See wes bos has() post.
+// add a texture to backgrounds, like space... stars or horizontal gradients
 
 // CARD BACKS:
+// fix opacity transition when card returns to front after selected
 // utilize stock imagery?
 // text shadow on the icon for dimension?
-// add a texture to backgrounds, like space... stars or horizontal gradients
 // de-saturate and stylize the icon on the back of the card? Maybe 1 large barely visible in the card center or along the edges/corners
 // is it possible to get the html emoticons in svg format? Then could make the robot's light flash or something when selected is active...
 
-// ACCESSIBILITY WORK *********
-// SOLVED: Accessibility focus tabbing is buggy. Is it the viewport mask? Chrome: works, FF: works, Saf: tabs through but focus doesn't seem to follow and seems to remain on a previous card.. also cards are skipping order... but make sense when go backward...
-// refer focus issue from this comment. https://github.com/davidjerleke/embla-carousel/issues/239#issuecomment-10730093740. This might be causing issues with safari focus state
-// User test fonts... use open-dyslexic? https://opendyslexic.org/
+// MOBILE OPTIMIZATIONS: ------------------------------
+// Remove some of the fluid type sizing, like for icons? Is this causing bloat? Notice when resizing.
 
-// BUGS
-// progress bar buggy, sometimes doesn't show up until rage click a few slides in
+// OPTIMIZE MOBILE maybe turn off opacity on mobile as well? make simple?
+// try: text-rendering: optimizeSpeed; or will-change: transform... or don't transform icons at all.
+// Only do icon animations on desktop? Mobile is too much it causes chop.
+
+// OPTIMIZE MOBILE use devtools to investigate if I have too heavy css operations causing repaints, etc... maybe just render the integer grid for each individual card instead of all of them? Ask tim? ISSUES ONLY OCCUR WITH DYSLEXIA... IT HAS TO BE BECAUSE OF THE ICONGRID
+
+// use has() all siblings besides the current slide to animate opacity and scale? See wes bos has() post.
+
+// BUGS ------------------------------
 // FF, tab focus-visible on switch is not working when the checkbox is visually hidden. Google how to get around this issue. It has to be a common problem.
-// fix opacity transition when card returns to front after selected
 // where are all the tailwind css variables coming from? They load over and over again. Only exist in package.lock. Possibly a dependency of a third party? Embla?
 
 // TOUCH UP / CLEAN UP ************
@@ -49,12 +41,11 @@ import './App.scss';
 // remove unnecessary font size variables
 // remove comments and console logs
 // consolidate text sizes and add for 16rem
-// performance enhancements on mobile... dyslexic version is choppy, try: text-rendering: optimizeSpeed; or will-change: transform... or don't transform icons at all.
-// Only do icon animations on desktop. Mobile is too much it causes chop.
-// does "selected" need to be a state variable? or just a js toggle? It will remember which card is flipped over. Might be more performant to use JS and basic css instead of state var. Experiment.
 // try out range syntax in media queries: https://www.bram.us/2021/10/26/media-queries-level-4-media-query-range-contexts/
 
 // NICE TO HAVE / ENHANCEMENTS
+// MESSAGING: design where occurs. tune up progress success messaging. glitches back and fourth... maybe round the number up with ceiling to make it exact, or set to 10.5? Could also add a callback timer function to wait a second before applying. too fluid at the moment, the text bounces back and forth between text. Also animate this text in and have it disappear again. Don't want to disappear too quickly... kids can't read that fast, can't be like subtitles, need time to process the words.
+// controls space could be used to fade in/out motivational messages?
 // add gradient to give background some dimension. Like a back wall and floor corner effect. FOR EXAMPLE:
 // background: linear-gradient(0deg, #fedd37 39%, var(--theme-color-body-bg)40%);
 // background-size: 100% 100%;
@@ -189,8 +180,8 @@ const App = () => {
 					<CardCarousel icon={dataTheme} />
 				</div>
 				<footer>
-					&copy;&nbsp;2024&nbsp;Ryan&nbsp;Brandle.{' '}
-					<em>Crafted&nbsp;with&nbsp;care&nbsp;for&nbsp;curious&nbsp;minds.</em>
+					<em>Crafted&nbsp;with&nbsp;care&nbsp;for&nbsp;curious&nbsp;minds.</em>{' '}
+					&copy;&nbsp;2024&nbsp;Ryan&nbsp;Brandle.
 				</footer>
 			</div>
 		</div>

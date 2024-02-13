@@ -33,24 +33,23 @@
 }
 
 .leftSide {
-	--flow-space: var(--space-xl);
+	--flow-space: var(--space-md);
 
-	display: grid;
-	place-content: center;
-	text-align: left;
 	container-type: inline-size;
 	color: var(--theme-color-body-text);
-
-	@media screen and (max-width: 1023px) {
-		--flow-space: var(--space-md);
-
-		@include utils.max-width;
-		text-align: center;
-	}
+	padding: 0 clamp(var(--space-base), 4vw, var(--space-lg));
+	text-align: center;
 
 	@media screen and (min-width: 1024px) {
+		--flow-space: var(--space-xl);
+
+		display: grid;
+		place-content: center;
+		text-align: left;
 		margin-top: 0;
 		margin-bottom: var(--app-header-height);
+		padding-left: 0;
+		padding-right: var(--app-header-height);
 	}
 
 	* + * {
@@ -59,7 +58,7 @@
 
 	header {
 		@media screen and (min-width: 1024px) {
-			margin-top: -80px;
+			margin-top: -80px; // optical alignment
 		}
 	}
 
@@ -68,8 +67,7 @@
 		@include utils.fluid-type;
 
 		@media screen and (max-width: 1023px) {
-			margin-left: auto;
-			margin-right: auto;
+			margin-inline: auto;
 		}
 	}
 
@@ -153,10 +151,13 @@ footer {
 	line-height: 1.2;
 	color: var(--theme-color-body-text);
 	padding: 0 clamp(var(--space-base), 4vw, var(--space-lg));
+	margin-inline: auto;
+	max-width: fit-content;
 
 	@media screen and (min-width: 1024px) {
 		text-align: left;
 		padding: 0;
+		margin-inline: initial;
 	}
 }
 
@@ -189,7 +190,7 @@ footer {
 	}
 
 	@media screen and (min-width: 1024px) {
-		position: initial;
+		position: static;
 		justify-content: start;
 		background: transparent;
 		padding: 0;
