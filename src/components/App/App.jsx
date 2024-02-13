@@ -8,7 +8,7 @@ import './App.scss';
 
 // update layout to change to desktop at 1200 instead of 1024
 
-// fix typography on left side desktop. Almost extends to viewport edge. Investgate why usage of grid and container queries might push typography outside the grid. Also, dyslexia font on mobile is too large and almost hits viewport edge... likely related
+// fix typography on left side desktop. Almost extends to viewport edge. Investigate why usage of grid and container queries might push typography outside the grid. Also, dyslexia font on mobile is too large and almost hits viewport edge... likely related
 
 // add 2 more themes
 
