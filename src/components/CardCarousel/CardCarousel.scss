@@ -87,20 +87,20 @@
 		margin-inline: auto;
 
 		@media screen and (min-width: 1024px) {
-			--card-vw: 33vw;
+			--card-vw: 30vw;
 		}
 	}
 }
 
 .carouselButton {
 	grid-area: container;
-	font-size: var(--text-6xl);
+	font-size: var(--text-7xl);
 	background-color: transparent;
 	display: inline-flex;
 	text-decoration: none;
 	color: var(--button-color);
 	border: 0;
-	padding: 0;
+	padding: 0 var(--space-xs);
 	margin: 0;
 	z-index: 1;
 	transition: transform var(--duration-2xs) ease-out, opacity var(--duration-sm) ease-out;
@@ -116,6 +116,12 @@
 	-ms-touch-action: manipulation;
 	-webkit-touch-action: manipulation;
 	-moz-touch-action: manipulation;
+
+	@media screen and (min-width: 600px) {
+		font-size: var(--text-6xl);
+		padding-left: 0;
+		padding-right: 0;
+	}
 
 	&.previous {
 		place-self: center left;
