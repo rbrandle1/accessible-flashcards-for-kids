@@ -18,18 +18,17 @@
 
 .wrapper {
 	display: block;
-	margin-top: var(--app-header-height);
-
-	@media screen and (max-width: 499px) {
-		padding-bottom: var(--space-base);
-	}
+	padding-bottom: var(--space-md);
+	padding-top: var(--app-header-height);
 
 	@media screen and (min-width: 1024px) {
 		@include utils.max-width;
 		display: grid;
 		grid-template-columns: 1fr 2fr;
-		grid-template-rows: auto 1fr 40px;
+		grid-template-rows: auto 1fr auto;
 		gap: var(--space-lg);
+		padding-top: var(--app-header-height);
+		padding-bottom: var(--space-base);
 	}
 }
 
@@ -47,6 +46,11 @@
 
 		@include utils.max-width;
 		text-align: center;
+	}
+
+	@media screen and (min-width: 1024px) {
+		margin-top: 0;
+		margin-bottom: var(--app-header-height);
 	}
 
 	* + * {
@@ -138,10 +142,8 @@
 	margin: var(--space-xl) 0 var(--space-2xl);
 
 	@media screen and (min-width: 1024px) {
-		// margin-top: var(--space-3xl);
-		// margin-bottom: var(--space-3xl);
-		margin-bottom: 0;
-		margin-top: calc(var(--app-header-height) / -1);
+		margin-top: 0;
+		margin-bottom: var(--app-header-height);
 	}
 }
 
@@ -153,7 +155,6 @@ footer {
 	padding: 0 clamp(var(--space-base), 4vw, var(--space-lg));
 
 	@media screen and (min-width: 1024px) {
-		margin-bottom: var(--space-base);
 		text-align: left;
 		padding: 0;
 	}
