@@ -9,6 +9,8 @@ import './App.scss';
 
 // add a texture to backgrounds, like space... stars or horizontal gradients
 
+// lazy load icons?
+
 // update @media to @contain?
 
 // CARD BACKS:
@@ -168,7 +170,7 @@ const App = () => {
 						<h1>
 							Multiplication Flashcards
 							<br />
-							<span class='accent'>for kids!</span>
+							<span className='accent'>for kids!</span>
 						</h1>
 						<h2>An accessible way to practice multiplication problems.</h2>
 					</header>

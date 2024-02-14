@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, useRef } from 'react';
 import './CardCarousel.scss';
 import useEmblaCarousel from 'embla-carousel-react';
 import ClassNames from 'embla-carousel-class-names';
@@ -25,11 +25,27 @@ export const CardCarousel = ({ icon }) => {
 	const emblaOptions = {
 		duration: 12,
 	};
-	const classNamesOptions = { selected: 'my-selected-class' };
+	const classNamesOptions = { selected: 'my-selected-class' }; //THIS IS NOT WORKING
 
 	const [emblaRef, emblaApi] = useEmblaCarousel(emblaOptions, [ClassNames(classNamesOptions)]);
 	const [scrollProgress, setScrollProgress] = useState(0);
 	const [selectedId, setSelectedId] = useState(null);
+	const [isSnapped, setIsSnapped] = useState(false);
+
+	// how can I get this to reflect only on the exact card item being shown?
+	const itemRef = useRef(null);
+
+	useEffect(() => {
+		if (itemRef.current.classList.contains('is-snapped')) {
+			// setIsSnapped(true);
+			console.log('li contains the class');
+		} else {
+			// setIsSnapped(false);
+			console.log('li DOES NOT contain the class');
+		}
+	}, [emblaRef]);
+
+	// console.log('✨  isSnapped =', isSnapped);
 
 	const onScroll = useCallback((emblaApi) => {
 		const progress = Math.max(0, Math.min(1, emblaApi.scrollProgress()));
@@ -80,11 +96,12 @@ export const CardCarousel = ({ icon }) => {
 							const isSelected = i === selectedId;
 
 							return (
-								<li className='slide' role='option' key={i}>
+								<li className='slide' role='option' key={i} ref={itemRef}>
 									<article>
 										<Card
 											icon={icon}
 											isSelected={isSelected}
+											isSnapped={isSnapped}
 											firstNum={firstNum}
 											secondNum={secondNum}
 											solution={result}
