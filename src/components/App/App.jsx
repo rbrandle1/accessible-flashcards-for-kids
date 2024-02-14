@@ -5,39 +5,32 @@ import './App.scss';
 
 //ToDo:
 
-// Sticky Controls - make controls attached to or in the same static space as the progress bar. Will always be in view. Make the background gradient out along the bottom so page text scrolls behind it.
+// add 2 more themes
 
-// reverse toggle and label location? keep center vert rule?
+// add a texture to backgrounds, like space... stars or horizontal gradients
 
-// add third or fourth
-
-// in addition... maybe this space could be used to fade in/out messages with the controls?
-
-// MOBILE OPTIMIZATIONS:
-// OPTIMIZE MOBILE maybe turn off opacity on mobile as well? make simple?
-
-// OPTIMIZE MOBILE use devtools to investigate if I have too heavy css operations causing repaints, etc... maybe just render the integer grid for each individual card instead of all of them? Ask tim? ISSUES ONLY OCCUR WITH DYSLEXIA... IT HAS TO BE BECAUSE OF THE ICONGRID
-
-// MESSAGING: design where occurs. tune up progress success messaging. glitches back and fourth... maybe round the number up with ceiling to make it exact, or set to 10.5? Could also add a callback timer function to wait a second before applying. too fluid at the moment, the text bounces back and forth between text. Also animate this text in and have it disappear again. Don't want to disappear too quickly... kids can't read that fast, can't be like subtitles, need time to process the words.
-
-// use has() all siblings besides the current slide to animate opacity and scale? See wes bos has() post.
+// update @media to @contain?
 
 // CARD BACKS:
+// fix opacity transition when card returns to front after selected
 // utilize stock imagery?
 // text shadow on the icon for dimension?
-// add a texture to backgrounds, like space... stars or horizontal gradients
 // de-saturate and stylize the icon on the back of the card? Maybe 1 large barely visible in the card center or along the edges/corners
 // is it possible to get the html emoticons in svg format? Then could make the robot's light flash or something when selected is active...
 
-// ACCESSIBILITY WORK *********
-// SOLVED: Accessibility focus tabbing is buggy. Is it the viewport mask? Chrome: works, FF: works, Saf: tabs through but focus doesn't seem to follow and seems to remain on a previous card.. also cards are skipping order... but make sense when go backward...
-// refer focus issue from this comment. https://github.com/davidjerleke/embla-carousel/issues/239#issuecomment-10730093740. This might be causing issues with safari focus state
-// User test fonts... use open-dyslexic? https://opendyslexic.org/
+// MOBILE OPTIMIZATIONS: ------------------------------
+// Remove some of the fluid type sizing, like for icons? Is this causing bloat? Notice when resizing.
 
-// BUGS
-// progress bar buggy, sometimes doesn't show up until rage click a few slides in
+// OPTIMIZE MOBILE maybe turn off opacity on mobile as well? make simple?
+// try: text-rendering: optimizeSpeed; or will-change: transform... or don't transform icons at all.
+// Only do icon animations on desktop? Mobile is too much it causes chop.
+
+// OPTIMIZE MOBILE use devtools to investigate if I have too heavy css operations causing repaints, etc... maybe just render the integer grid for each individual card instead of all of them? Ask tim? ISSUES ONLY OCCUR WITH DYSLEXIA... IT HAS TO BE BECAUSE OF THE ICONGRID
+
+// use has() all siblings besides the current slide to animate opacity and scale? See wes bos has() post.
+
+// BUGS ------------------------------
 // FF, tab focus-visible on switch is not working when the checkbox is visually hidden. Google how to get around this issue. It has to be a common problem.
-// fix opacity transition when card returns to front after selected
 // where are all the tailwind css variables coming from? They load over and over again. Only exist in package.lock. Possibly a dependency of a third party? Embla?
 
 // TOUCH UP / CLEAN UP ************
@@ -45,12 +38,11 @@ import './App.scss';
 // remove unnecessary font size variables
 // remove comments and console logs
 // consolidate text sizes and add for 16rem
-// performance enhancements on mobile... dyslexic version is choppy, try: text-rendering: optimizeSpeed; or will-change: transform... or don't transform icons at all.
-// Only do icon animations on desktop. Mobile is too much it causes chop.
-// does "selected" need to be a state variable? or just a js toggle? It will remember which card is flipped over. Might be more performant to use JS and basic css instead of state var. Experiment.
 // try out range syntax in media queries: https://www.bram.us/2021/10/26/media-queries-level-4-media-query-range-contexts/
 
 // NICE TO HAVE / ENHANCEMENTS
+// MESSAGING: design where occurs. tune up progress success messaging. glitches back and fourth... maybe round the number up with ceiling to make it exact, or set to 10.5? Could also add a callback timer function to wait a second before applying. too fluid at the moment, the text bounces back and forth between text. Also animate this text in and have it disappear again. Don't want to disappear too quickly... kids can't read that fast, can't be like subtitles, need time to process the words.
+// controls space could be used to fade in/out motivational messages?
 // add gradient to give background some dimension. Like a back wall and floor corner effect. FOR EXAMPLE:
 // background: linear-gradient(0deg, #fedd37 39%, var(--theme-color-body-bg)40%);
 // background-size: 100% 100%;
@@ -103,6 +95,7 @@ import './App.scss';
 /**
  * PROBLEM SOLVING
  * Started with a grid. Not ideal for dyslexia because there is so much competing information. Decided to show one at a time with a carousel to help focus on 1 problem at a time and reducing distraction.
+ * Decided to create a global level design system to apply to any app that could potentially be used within the DOM instead of applying global variables like data-themes from within the React app itself. There are pros and cons to both options, but my approach was to handle this at the top level of the DOM on the body tag instead of using a useRef within the app.
  * Typography. Unkempt vs Bangers... Unkempt too much like the "For Dummies" books from the 90's.
  * Color theming. Utilized native html emoji colors to create well balanced, well contrasted and easy to read color themes.
  * Token variable naming conventions... attempted to map the raw color names to a --theme-accent-primary/1/2/3 but found that confusing and unnecessary for this particular project. In a more advanced system naming primary/secondary/accents would be more appropriate.
@@ -155,37 +148,37 @@ const App = () => {
 	return (
 		<div className='app'>
 			<div className='wrapper'>
+				<div className='controls'>
+					<Switch label='Optimize for Dyslexia' onChange={() => handleAccessibilityTheme()} />
+					<div className='iconSelect'>
+						<label htmlFor='icon-select'>Theme</label>
+						<select id='icon-select' name='icon' value={dataTheme} onChange={(e) => setDataTheme(e.target.value)}>
+							<option value='🚀'>🚀</option>
+							<option value='🤖'>🤖</option>
+							{/* <option value="🦊">🦊</option> */}
+							{/* <option value="🌴">🌴</option> */}
+							{/* <option value="💜">💜</option> */}
+							{/* <option value="🍔">🍔</option> */}
+							{/* <option value="💩">💩</option> */}
+						</select>
+					</div>
+				</div>
 				<div className='leftSide'>
 					<header>
 						<h1>
 							Multiplication Flashcards
 							<br />
-							<span>for kids!</span>
+							<span class='accent'>for kids!</span>
 						</h1>
 						<h2>An accessible way to practice multiplication problems.</h2>
 					</header>
 				</div>
 				<div className='rightSide'>
-					<div className='controls'>
-						<Switch label='Optimize for Dyslexia' onChange={() => handleAccessibilityTheme()} />
-						<div className='iconSelect'>
-							<label htmlFor='icon-select'>Theme</label>
-							<select id='icon-select' name='icon' value={dataTheme} onChange={(e) => setDataTheme(e.target.value)}>
-								<option value='🚀'>🚀</option>
-								<option value='🤖'>🤖</option>
-								{/* <option value="🦊">🦊</option> */}
-								{/* <option value="🌴">🌴</option> */}
-								{/* <option value="💜">💜</option> */}
-								{/* <option value="🍔">🍔</option> */}
-								{/* <option value="💩">💩</option> */}
-							</select>
-						</div>
-					</div>
 					<CardCarousel icon={dataTheme} />
 				</div>
 				<footer>
-					&copy;&nbsp;2024&nbsp;Ryan&nbsp;Brandle.{' '}
-					<em>Crafted&nbsp;with&nbsp;care&nbsp;for&nbsp;curious&nbsp;minds!</em>
+					<em>Crafted&nbsp;with&nbsp;care&nbsp;for&nbsp;curious&nbsp;minds.</em>{' '}
+					&copy;&nbsp;2024&nbsp;Ryan&nbsp;Brandle.
 				</footer>
 			</div>
 		</div>

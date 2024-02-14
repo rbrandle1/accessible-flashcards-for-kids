@@ -195,10 +195,6 @@
 		}
 	}
 
-	.selected & {
-		font-size: var(--text-8xl);
-	}
-
 	span {
 		color: var(--card-color-front-text-secondary);
 		padding-right: var(--space-sm);

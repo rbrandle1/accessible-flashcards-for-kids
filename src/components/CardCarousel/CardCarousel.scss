@@ -63,8 +63,6 @@
 	@media screen and (min-width: 500px) {
 		-webkit-mask-image: var(--mask);
 		mask-image: var(--mask);
-		// margin-left: calc(var(--mask-width) / -1);
-		// margin-right: calc(var(--mask-width) / -1);
 		overflow: hidden;
 	}
 }
@@ -82,49 +80,27 @@
 	// transition: transform 5s ease-out;
 
 	article {
-		// --slide-width-min: 300px;
-		// --slide-width-max: 370px;
+		--card-vw: 50vw;
 
 		height: 100%;
-		// width: clamp(300px, 50vw, 370px);
-		width: clamp(300px, 33vw, 470px);
+		width: clamp(300px, var(--card-vw), 470px);
+		margin-inline: auto;
 
-		margin-left: auto;
-		margin-right: auto;
+		@media screen and (min-width: 1024px) {
+			--card-vw: 30vw;
+		}
 	}
 }
 
-// .buttonContainer {
-// 	display: grid;
-// 	grid-template-columns: auto auto;
-// 	place-content: center;
-// 	gap: var(--space-md);
-// 	overflow: hidden;
-
-// 	@media screen and (min-width: 500px) {
-// 		position: absolute;
-// 		top: 50%;
-// 		left: 0;
-// 		right: 0;
-// 		transform: translateY(-50%);
-// 		width: 100%;
-// 		justify-content: space-between;
-// 		margin-left: auto;
-// 		margin-right: auto;
-// 		padding: 0 clamp(var(--space-base), 4vw, var(--space-lg));
-// 		width: min(650px, 100%);
-// 	}
-// }
-
 .carouselButton {
 	grid-area: container;
-	font-size: var(--text-6xl);
+	font-size: var(--text-7xl);
 	background-color: transparent;
 	display: inline-flex;
 	text-decoration: none;
 	color: var(--button-color);
 	border: 0;
-	padding: 0;
+	padding: 0 var(--space-xs);
 	margin: 0;
 	z-index: 1;
 	transition: transform var(--duration-2xs) ease-out, opacity var(--duration-sm) ease-out;
@@ -140,6 +116,12 @@
 	-ms-touch-action: manipulation;
 	-webkit-touch-action: manipulation;
 	-moz-touch-action: manipulation;
+
+	@media screen and (min-width: 600px) {
+		font-size: var(--text-6xl);
+		padding-left: 0;
+		padding-right: 0;
+	}
 
 	&.previous {
 		place-self: center left;
@@ -210,12 +192,10 @@
 	right: 0;
 	left: 0;
 	height: var(--progress-height);
-	margin-left: auto;
-	margin-right: auto;
+	margin-inline: auto;
 	pointer-events: none;
 	width: 100%;
 	overflow: hidden;
-	// box-shadow: 0px 1px 3px var(--color-black-70);
 }
 
 .progressBar {

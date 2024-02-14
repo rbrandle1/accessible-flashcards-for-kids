@@ -1,42 +1,57 @@
 @use '../../styles/utils';
 
 .app {
+	--app-bar-height: 4vh;
+	--app-header-height: calc(var(--app-bar-height) + var(--app-controls-height, 0px));
+
+	@media screen and (max-width: 499px) {
+		--app-controls-height: 80px;
+	}
+
+	@media screen and (min-width: 500px) and (max-width: 1023px) {
+		--app-controls-height: 128px;
+	}
+
 	display: grid;
 	height: 100vh;
 }
 
 .wrapper {
 	display: block;
-	margin-top: var(--app-bar-height);
-
-	@media screen and (max-width: 499px) {
-		padding-bottom: var(--space-base);
-	}
+	padding-bottom: var(--space-md);
+	padding-top: var(--app-header-height);
 
 	@media screen and (min-width: 1024px) {
 		@include utils.max-width;
 		display: grid;
 		grid-template-columns: 1fr 2fr;
-		grid-template-rows: 1fr 40px;
+		grid-template-rows: auto 1fr auto;
 		gap: var(--space-lg);
+		padding-top: var(--app-header-height);
+		padding-bottom: var(--space-base);
 	}
 }
 
 .leftSide {
 	--flow-space: var(--space-xl);
 
-	display: grid;
-	place-content: center;
-	text-align: left;
 	container-type: inline-size;
 	color: var(--theme-color-body-text);
+	padding: 0 clamp(var(--space-base), 4vw, var(--space-lg));
+	text-align: center;
 
-	@media screen and (max-width: 1023px) {
-		--flow-space: var(--space-md);
+	@media screen and (min-width: 1024px) {
+		display: grid;
+		align-content: center;
+		text-align: left;
+		margin-top: 0;
+		margin-bottom: var(--app-header-height);
+		padding-left: 0;
+		padding-right: var(--app-header-height);
+	}
 
-		@include utils.max-width;
-		margin-top: var(--space-2xl);
-		text-align: center;
+	@media screen and (min-width: 1024px) and (max-width: 1199px) {
+		--flow-space: var(--space-lg);
 	}
 
 	* + * {
@@ -45,51 +60,26 @@
 
 	header {
 		@media screen and (min-width: 1024px) {
-			margin-top: -80px;
+			margin-top: -80px; // optical alignment
 		}
 	}
 
 	h1,
-	h2 {
+	h2,
+	.accent {
 		@include utils.fluid-type;
 
 		@media screen and (max-width: 1023px) {
-			margin-left: auto;
-			margin-right: auto;
+			margin-inline: auto;
 		}
 	}
 
 	h1 {
 		--font-size-min: var(--text-3xl);
-		--font-size-fluid: 14cqi;
+		--font-size-fluid: 12cqi;
 		--font-size-max: var(--text-8xl);
 
 		line-height: 1.1;
-
-		span {
-			font-family: var(--font-family-display);
-			display: inline-block;
-			transform: skewY(-6deg);
-			letter-spacing: 1.5px;
-			background-image: linear-gradient(45deg, var(--theme-color-gradient-left), var(--theme-color-gradient-right));
-			color: transparent;
-			-webkit-background-clip: text;
-			background-clip: text;
-			padding-right: var(--space-base);
-			margin-top: var(--space-md);
-			text-shadow: 3px 3px 0px var(--theme-color-body-text);
-
-			// example below
-			// text-shadow: 3px 3px 0px var(--theme-color-body-text);
-			// background-image: url('https://3.bp.blogspot.com/-6Cw056uPYug/UjS0rCZ8x0I/AAAAAAAABAE/nGHZHmFmPzs/s1600/234.jpg');
-			// background-position: 0 35%;
-
-			// color: transparent;
-			// padding: 20px 40px;
-			// -webkit-background-clip: text;
-			// -moz-background-clip: text;
-			// background-clip: text;
-		}
 
 		@media screen and (max-width: 1023px) {
 			max-width: 18ch;
@@ -122,24 +112,69 @@
 	}
 }
 
+.accent {
+	--font-size-fluid: 16cqi;
+
+	font-family: var(--font-family-display);
+	display: inline-block;
+	transform: skewY(-6deg);
+	letter-spacing: 1.5px;
+	background-image: linear-gradient(45deg, var(--theme-color-gradient-left), var(--theme-color-gradient-right));
+	color: transparent;
+	-webkit-background-clip: text;
+	background-clip: text;
+	margin-top: var(--space-base);
+	text-shadow: 3px 3px 0px var(--theme-color-body-text);
+	white-space: nowrap;
+
+	// example below
+	// text-shadow: 3px 3px 0px var(--theme-color-body-text);
+	// background-image: url('https://3.bp.blogspot.com/-6Cw056uPYug/UjS0rCZ8x0I/AAAAAAAABAE/nGHZHmFmPzs/s1600/234.jpg');
+	// background-position: 0 35%;
+
+	// color: transparent;
+	// padding: 20px 40px;
+	// -webkit-background-clip: text;
+	// -moz-background-clip: text;
+	// background-clip: text;
+
+	@media screen and (min-width: 768px) {
+		--font-size-fluid: 11cqi;
+	}
+	@media screen and (min-width: 1024px) {
+		--font-size-fluid: 28cqi;
+	}
+	@media screen and (min-width: 1400px) {
+		--font-size-fluid: 22cqi;
+		margin-top: var(--space-md);
+	}
+}
+
 .rightSide {
 	display: grid;
 	align-content: center;
-	margin: var(--space-2xl) 0;
+	margin: var(--space-xl) 0 var(--space-2xl);
 
 	@media screen and (min-width: 1024px) {
-		margin-top: var(--space-3xl);
-		margin-bottom: var(--space-3xl);
+		margin-top: 0;
+		margin-bottom: var(--app-header-height);
 	}
 }
 
 footer {
 	grid-column: -1 / 1;
-	place-self: center;
 	text-align: center;
 	line-height: 1.2;
 	color: var(--theme-color-body-text);
 	padding: 0 clamp(var(--space-base), 4vw, var(--space-lg));
+	margin-inline: auto;
+	max-width: fit-content;
+
+	@media screen and (min-width: 1024px) {
+		text-align: left;
+		padding: 0;
+		margin-inline: initial;
+	}
 }
 
 // ===============================
@@ -147,18 +182,35 @@ footer {
 // ===============================
 
 .controls {
-	font-size: var(--text-md);
+	font-size: var(--text-base);
 	display: grid;
+	grid-column: -1 / 1;
 	grid-template-columns: auto auto;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-between;
 	gap: var(--space-base);
-	margin-bottom: var(--space-base);
+	position: fixed;
+	top: var(--app-bar-height);
+	padding: var(--space-base) clamp(var(--space-base), 4vw, var(--space-lg)) var(--space-lg);
+	width: 100%;
+	height: var(--app-controls-height);
+	z-index: 1;
+	background-color: var(--theme-color-body-bg);
+	background: linear-gradient(0deg, transparent, var(--theme-color-body-bg) 25%);
 
-	@media screen and (max-width: 499px) {
-		font-size: var(--text-base);
-		justify-content: space-between;
-		padding: 0 clamp(var(--space-base), 4vw, var(--space-lg));
+	@media screen and (min-width: 500px) {
+		font-size: var(--text-md);
+		justify-content: center;
+		padding-bottom: var(--space-2xl);
+		padding-top: var(--space-lg);
+	}
+
+	@media screen and (min-width: 1024px) {
+		position: static;
+		justify-content: start;
+		background: transparent;
+		padding: 0;
+		margin-top: var(--space-lg);
 	}
 }
 
