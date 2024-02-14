@@ -4,15 +4,12 @@ import CardCarousel from '../CardCarousel/CardCarousel';
 import './App.scss';
 
 //ToDo:
-// add space between mobile arrow buttons
-
-// update layout to change to desktop at 1200 instead of 1024
-
-// fix typography on left side desktop. Almost extends to viewport edge. Investigate why usage of grid and container queries might push typography outside the grid. Also, dyslexia font on mobile is too large and almost hits viewport edge... likely related
 
 // add 2 more themes
 
 // add a texture to backgrounds, like space... stars or horizontal gradients
+
+// update @media to @contain?
 
 // CARD BACKS:
 // fix opacity transition when card returns to front after selected
@@ -171,7 +168,7 @@ const App = () => {
 						<h1>
 							Multiplication Flashcards
 							<br />
-							<span>for kids!</span>
+							<span class='accent'>for kids!</span>
 						</h1>
 						<h2>An accessible way to practice multiplication problems.</h2>
 					</header>

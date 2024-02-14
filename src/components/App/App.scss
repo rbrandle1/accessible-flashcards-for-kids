@@ -33,7 +33,7 @@
 }
 
 .leftSide {
-	--flow-space: var(--space-md);
+	--flow-space: var(--space-xl);
 
 	container-type: inline-size;
 	color: var(--theme-color-body-text);
@@ -41,15 +41,17 @@
 	text-align: center;
 
 	@media screen and (min-width: 1024px) {
-		--flow-space: var(--space-xl);
-
 		display: grid;
-		place-content: center;
+		align-content: center;
 		text-align: left;
 		margin-top: 0;
 		margin-bottom: var(--app-header-height);
 		padding-left: 0;
 		padding-right: var(--app-header-height);
+	}
+
+	@media screen and (min-width: 1024px) and (max-width: 1199px) {
+		--flow-space: var(--space-lg);
 	}
 
 	* + * {
@@ -63,7 +65,8 @@
 	}
 
 	h1,
-	h2 {
+	h2,
+	.accent {
 		@include utils.fluid-type;
 
 		@media screen and (max-width: 1023px) {
@@ -73,35 +76,10 @@
 
 	h1 {
 		--font-size-min: var(--text-3xl);
-		--font-size-fluid: 14cqi;
+		--font-size-fluid: 12cqi;
 		--font-size-max: var(--text-8xl);
 
 		line-height: 1.1;
-
-		span {
-			font-family: var(--font-family-display);
-			display: inline-block;
-			transform: skewY(-6deg);
-			letter-spacing: 1.5px;
-			background-image: linear-gradient(45deg, var(--theme-color-gradient-left), var(--theme-color-gradient-right));
-			color: transparent;
-			-webkit-background-clip: text;
-			background-clip: text;
-			padding-right: var(--space-base);
-			margin-top: var(--space-md);
-			text-shadow: 3px 3px 0px var(--theme-color-body-text);
-
-			// example below
-			// text-shadow: 3px 3px 0px var(--theme-color-body-text);
-			// background-image: url('https://3.bp.blogspot.com/-6Cw056uPYug/UjS0rCZ8x0I/AAAAAAAABAE/nGHZHmFmPzs/s1600/234.jpg');
-			// background-position: 0 35%;
-
-			// color: transparent;
-			// padding: 20px 40px;
-			// -webkit-background-clip: text;
-			// -moz-background-clip: text;
-			// background-clip: text;
-		}
 
 		@media screen and (max-width: 1023px) {
 			max-width: 18ch;
@@ -131,6 +109,44 @@
 		@media screen and (min-width: 1024px) {
 			--font-size-fluid: 7cqi;
 		}
+	}
+}
+
+.accent {
+	--font-size-fluid: 16cqi;
+
+	font-family: var(--font-family-display);
+	display: inline-block;
+	transform: skewY(-6deg);
+	letter-spacing: 1.5px;
+	background-image: linear-gradient(45deg, var(--theme-color-gradient-left), var(--theme-color-gradient-right));
+	color: transparent;
+	-webkit-background-clip: text;
+	background-clip: text;
+	margin-top: var(--space-base);
+	text-shadow: 3px 3px 0px var(--theme-color-body-text);
+	white-space: nowrap;
+
+	// example below
+	// text-shadow: 3px 3px 0px var(--theme-color-body-text);
+	// background-image: url('https://3.bp.blogspot.com/-6Cw056uPYug/UjS0rCZ8x0I/AAAAAAAABAE/nGHZHmFmPzs/s1600/234.jpg');
+	// background-position: 0 35%;
+
+	// color: transparent;
+	// padding: 20px 40px;
+	// -webkit-background-clip: text;
+	// -moz-background-clip: text;
+	// background-clip: text;
+
+	@media screen and (min-width: 768px) {
+		--font-size-fluid: 11cqi;
+	}
+	@media screen and (min-width: 1024px) {
+		--font-size-fluid: 28cqi;
+	}
+	@media screen and (min-width: 1400px) {
+		--font-size-fluid: 22cqi;
+		margin-top: var(--space-md);
 	}
 }
 
