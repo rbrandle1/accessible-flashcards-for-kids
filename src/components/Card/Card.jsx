@@ -1,5 +1,5 @@
 import IconGrid from '../IconGrid/IconGrid'; // comment out when attempting lazy.
-import { lazy } from 'react';
+// import { lazy } from 'react';
 import './Card.scss';
 
 // const IconGrid = lazy(() => import('../IconGrid/IconGrid'));
