@@ -1,4 +1,4 @@
-import IconGrid from '../IconGrid/IconGrid';
+import IconGrid from '../IconGrid/IconGrid'; // comment out when attempting lazy.
 import { lazy } from 'react';
 import './Card.scss';
 

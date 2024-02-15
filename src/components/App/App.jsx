@@ -5,6 +5,8 @@ import './App.scss';
 
 //ToDo:
 
+// try out lazy from react.
+
 // add 2 more themes
 
 // add a texture to backgrounds, like space... stars or horizontal gradients
