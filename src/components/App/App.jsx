@@ -176,7 +176,7 @@ const App = () => {
 					</header>
 				</div>
 				<div className='rightSide'>
-					<CardCarousel icon={dataTheme} />
+					<CardCarousel icon={dataTheme} isDyslexic={dataAccessibilityTheme === 'dyslexic'} />
 				</div>
 				<footer>
 					<em>Crafted&nbsp;with&nbsp;care&nbsp;for&nbsp;curious&nbsp;minds.</em>{' '}

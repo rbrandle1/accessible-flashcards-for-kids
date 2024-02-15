@@ -1,7 +1,11 @@
+import IconGrid from '../IconGrid/IconGrid';
+import { lazy } from 'react';
 import './Card.scss';
 
-export const Card = ({ icon, isSelected, isSnapped, firstNum, secondNum, solution, onClick }) => {
-	const resultsArr = Array.from({ length: solution }, (_, i) => i);
+// const IconGrid = lazy(() => import('../IconGrid/IconGrid'));
+
+export const Card = ({ icon, isSelected, isSnapped, firstNum, secondNum, solution, onClick, isDyslexic }) => {
+	// const resultsArr = Array.from({ length: solution }, (_, i) => i);
 
 	return (
 		<button className={`card ${isSelected ? 'selected' : ''}`} onClick={onClick}>
@@ -12,23 +16,7 @@ export const Card = ({ icon, isSelected, isSnapped, firstNum, secondNum, solutio
 				</>
 			) : (
 				<>
-					<div className='gridContainer'>
-						{isSnapped ? (
-							<div
-								className='integerGrid'
-								style={{
-									'--grid-columns': `${secondNum}`,
-									'--grid-rows': `${firstNum}`,
-								}}
-							>
-								{resultsArr.map((i) => (
-									<div className='cell' key={i}>
-										{icon}
-									</div>
-								))}
-							</div>
-						) : null}
-					</div>
+					{isDyslexic ? <IconGrid icon={icon} firstNum={firstNum} secondNum={secondNum} solution={solution} /> : null}
 					<div className='integerEquation'>
 						<div className='integer front'>{firstNum}</div>
 						<div className='integer front'>

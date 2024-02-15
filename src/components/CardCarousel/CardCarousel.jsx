@@ -21,7 +21,7 @@ const shuffle = (arr) => {
 
 const cards = shuffle(equations);
 
-export const CardCarousel = ({ icon }) => {
+export const CardCarousel = ({ icon, isDyslexic }) => {
 	const emblaOptions = {
 		duration: 12,
 	};
@@ -101,7 +101,8 @@ export const CardCarousel = ({ icon }) => {
 										<Card
 											icon={icon}
 											isSelected={isSelected}
-											isSnapped={isSnapped}
+											// isSnapped={isSnapped}
+											isDyslexic={isDyslexic}
 											firstNum={firstNum}
 											secondNum={secondNum}
 											solution={result}
