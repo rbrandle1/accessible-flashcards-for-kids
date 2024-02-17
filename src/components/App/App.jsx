@@ -5,13 +5,13 @@ import './App.scss';
 
 //ToDo:
 
-// try out lazy from react.
+// try out lazy from react, but only suspend when the slide is in view. Try to tap into slidesInView... if slidesInView < 2, then toggle isVisible hook and render the icongrid... or something like that.
 
 // add 2 more themes
 
 // add a texture to backgrounds, like space... stars or horizontal gradients
 
-// lazy load icons?
+// add aria hidden when slide is not in view? Double check best practices.
 
 // update @media to @contain?
 

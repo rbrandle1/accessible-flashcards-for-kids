@@ -1,10 +1,19 @@
-import IconGrid from '../IconGrid/IconGrid'; // comment out when attempting lazy.
-// import { lazy } from 'react';
+// import IconGrid from '../IconGrid/IconGrid'; // comment out when attempting lazy.
+import { lazy, Suspense } from 'react';
 import './Card.scss';
 
-// const IconGrid = lazy(() => import('../IconGrid/IconGrid'));
+const IconGrid = lazy(() => import('../IconGrid/IconGrid'));
 
-export const Card = ({ icon, isSelected, isSnapped, firstNum, secondNum, solution, onClick, isDyslexic }) => {
+export const Card = ({
+	icon,
+	isSelected,
+	// isSnapped,
+	firstNum,
+	secondNum,
+	solution,
+	onClick,
+	isDyslexic,
+}) => {
 	// const resultsArr = Array.from({ length: solution }, (_, i) => i);
 
 	return (
@@ -16,7 +25,11 @@ export const Card = ({ icon, isSelected, isSnapped, firstNum, secondNum, solutio
 				</>
 			) : (
 				<>
-					{isDyslexic ? <IconGrid icon={icon} firstNum={firstNum} secondNum={secondNum} solution={solution} /> : null}
+					{isDyslexic ? (
+						<Suspense fallback={`🔥`}>
+							<IconGrid icon={icon} firstNum={firstNum} secondNum={secondNum} solution={solution} />
+						</Suspense>
+					) : null}
 					<div className='integerEquation'>
 						<div className='integer front'>{firstNum}</div>
 						<div className='integer front'>
