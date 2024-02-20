@@ -13,7 +13,7 @@ import './App.scss';
 
 // add aria hidden when slide is not in view? Double check best practices.
 
-// update @media to @contain?
+// Try out @contain container queries instead of @media?
 
 // CARD BACKS:
 // fix opacity transition when card returns to front after selected
@@ -62,7 +62,6 @@ import './App.scss';
 // make slider more interesting. add ::after to change shape, or add encouraging messaging
 // have an input mode, where checks the answer and if correct, apply the selected class, if not, shake no
 // add a progress monitor tool so users can see what day they did and how much they got right.
-// try to get grid to load only when applicable and not all at the beginning to avoid the FOUC. Lazy load???
 // ADD a shuffle/reset button to refilter
 // add a start stop timer?
 // add alerts like "half way there! Keep going!", "only 10 more!"
