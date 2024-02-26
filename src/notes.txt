@@ -1,0 +1,77 @@
+//ToDo:
+
+// DOCUMENT:  lazy load issue, needed to add isVisible toggle state variable to isolate the suspence to only those that are in view. Significantly enhanced performance on mobile.
+// try out lazy from react, but only suspend when the slide is in view. Try to tap into slidesInView... if slidesInView < 2, then toggle isVisible hook and render the icongrid... or something like that.
+
+// now that performance is better on mobile, add animations to grid icons back in?
+
+// add 2 more themes
+
+// add a texture to backgrounds, like space... stars or horizontal gradients
+
+// add aria hidden when slide is not in view? Double check best practices.
+
+// Try out @contain container queries instead of @media?
+
+// CARD BACKS:
+// fix opacity transition when card returns to front after selected
+// utilize stock imagery?
+// text shadow on the icon for dimension?
+// de-saturate and stylize the icon on the back of the card? Maybe 1 large barely visible in the card center or along the edges/corners
+// is it possible to get the html emoticons in svg format? Then could make the robot's light flash or something when selected is active...
+
+// MOBILE OPTIMIZATIONS: ------------------------------
+// Remove some of the fluid type sizing, like for icons? Is this causing bloat? Notice when resizing.
+
+// OPTIMIZE MOBILE maybe turn off opacity on mobile as well? make simple?
+// try: text-rendering: optimizeSpeed; or will-change: transform... or don't transform icons at all.
+// Only do icon animations on desktop? Mobile is too much it causes chop.
+
+// OPTIMIZE MOBILE use devtools to investigate if I have too heavy css operations causing repaints, etc... maybe just render the integer grid for each individual card instead of all of them? Ask tim? ISSUES ONLY OCCUR WITH DYSLEXIA... IT HAS TO BE BECAUSE OF THE ICONGRID
+
+// use has() all siblings besides the current slide to animate opacity and scale? See wes bos has() post.
+
+// BUGS ------------------------------
+// FF, tab focus-visible on switch is not working when the checkbox is visually hidden. Google how to get around this issue. It has to be a common problem.
+// where are all the tailwind css variables coming from? They load over and over again. Only exist in package.lock. Possibly a dependency of a third party? Embla?
+
+// TOUCH UP / CLEAN UP ************
+// make breakpoint mixins use sass variables
+// remove unnecessary font size variables
+// remove comments and console logs
+// consolidate text sizes and add for 16rem
+// try out range syntax in media queries: https://www.bram.us/2021/10/26/media-queries-level-4-media-query-range-contexts/
+
+// NICE TO HAVE / ENHANCEMENTS
+// MESSAGING: design where occurs. tune up progress success messaging. glitches back and fourth... maybe round the number up with ceiling to make it exact, or set to 10.5? Could also add a callback timer function to wait a second before applying. too fluid at the moment, the text bounces back and forth between text. Also animate this text in and have it disappear again. Don't want to disappear too quickly... kids can't read that fast, can't be like subtitles, need time to process the words.
+// controls space could be used to fade in/out motivational messages?
+// add gradient to give background some dimension. Like a back wall and floor corner effect. FOR EXAMPLE:
+// background: linear-gradient(0deg, #fedd37 39%, var(--theme-color-body-bg)40%);
+// background-size: 100% 100%;
+// background-position: center bottom;
+// card flip animation
+// add some gristly texture overlay to "for kids"... background clip image with a multiply? use a data attribute for the text to mimic text before and/or after. Maybe can get drop shadow effect this way and do a blend mode?
+// for progress bar, try using a mask to reveal the svg beneath. Make the progress a squiggle, something fun, better than a bar. Think 80's/90's swooping sketch squiggle
+// update cubic bezier easing... add some smoothing, maybe some bounce
+// Make the progress bar fill up the entire viewport edge? completes the full square??? https://stackoverflow.com/questions/31996110/progress-bar-along-the-borders-of-a-rectangle#32003052
+// Add full screen background imagery per theme.
+// update select arrow with chevron?
+// on full completion, maybe rainbow animate the color bar?
+// make slider more interesting. add ::after to change shape, or add encouraging messaging
+// have an input mode, where checks the answer and if correct, apply the selected class, if not, shake no
+// add a progress monitor tool so users can see what day they did and how much they got right.
+// ADD a shuffle/reset button to refilter
+// add a start stop timer?
+// add alerts like "half way there! Keep going!", "only 10 more!"
+// final slide is a "complete!" message with an animation? or the card is a "success" card?
+// celebrate once reach the end... hooray! confetti?
+
+//NOTES:
+// Who was this made for? KIDS! Specifically elementary school age that supporting accessibility features like dyslexic readers
+// design suggests: daring, brave, adventure, curiosity, confidence, encouragement, focus, fun, positive, excitement, nostalgia? Needs to be legible for clarity and speed but also have a sense of curiosity, encouragement and fun. It also needs work with each theme that is selected.
+// DYSLEXIA FEATURES to note:
+// add theme for dyslexia... use a different font, allow for color, size modifications? Perhaps just apply a data-theme for dyslexia!
+//left align everything
+//use dark grey for text... true black on white bgcolor can create a blurring effect
+// use visual alerts
+// reinforced text with icons

@@ -30,22 +30,15 @@ export const CardCarousel = ({ icon, isDyslexic }) => {
 	const [emblaRef, emblaApi] = useEmblaCarousel(emblaOptions, [ClassNames(classNamesOptions)]);
 	const [scrollProgress, setScrollProgress] = useState(0);
 	const [selectedId, setSelectedId] = useState(null);
-	const [isSnapped, setIsSnapped] = useState(false);
+	const [slidesInView, setSlidesInView] = useState([]);
 
-	// how can I get this to reflect only on the exact card item being shown?
-	const itemRef = useRef(null);
+	// const updateSlidesInView = useCallback((emblaApi) => {
+	// 	setSlidesInView(emblaApi.slidesInView());
+	// }, []);
 
 	useEffect(() => {
-		if (itemRef.current.classList.contains('is-snapped')) {
-			// setIsSnapped(true);
-			console.log('li contains the class');
-		} else {
-			// setIsSnapped(false);
-			console.log('li DOES NOT contain the class');
-		}
-	}, [emblaRef]);
-
-	// console.log('✨  isSnapped =', isSnapped);
+		if (emblaApi) emblaApi.on('slidesInView', () => setSlidesInView(emblaApi.slidesInView()));
+	}, [emblaApi, setSlidesInView]);
 
 	const onScroll = useCallback((emblaApi) => {
 		const progress = Math.max(0, Math.min(1, emblaApi.scrollProgress()));
@@ -65,13 +58,6 @@ export const CardCarousel = ({ icon, isDyslexic }) => {
 	const handleCardClick = (id) => {
 		setSelectedId(id !== selectedId ? id : null);
 	};
-
-	// // TODO: remove this console log
-	// useEffect(() => {
-	//   if (emblaApi) {
-	//     console.log(emblaApi.slideNodes()); // Access API
-	//   }
-	// }, [emblaApi]);
 
 	// Todo: figure out how to round the number or set it so it doesn't wobble back and forth
 	// or +10, +20 +30... fades in and up... like scoring points
@@ -96,12 +82,12 @@ export const CardCarousel = ({ icon, isDyslexic }) => {
 							const isSelected = i === selectedId;
 
 							return (
-								<li className='slide' role='option' key={i} ref={itemRef}>
+								<li className='slide' role='option' key={i}>
 									<article>
 										<Card
 											icon={icon}
 											isSelected={isSelected}
-											// isSnapped={isSnapped}
+											isVisible={slidesInView.includes(i)}
 											isDyslexic={isDyslexic}
 											firstNum={firstNum}
 											secondNum={secondNum}

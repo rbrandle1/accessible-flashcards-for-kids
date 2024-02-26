@@ -4,16 +4,7 @@ import './Card.scss';
 
 const IconGrid = lazy(() => import('../IconGrid/IconGrid'));
 
-export const Card = ({
-	icon,
-	isSelected,
-	// isSnapped,
-	firstNum,
-	secondNum,
-	solution,
-	onClick,
-	isDyslexic,
-}) => {
+export const Card = ({ icon, isSelected, isVisible, firstNum, secondNum, solution, onClick, isDyslexic }) => {
 	// const resultsArr = Array.from({ length: solution }, (_, i) => i);
 
 	return (
@@ -25,8 +16,8 @@ export const Card = ({
 				</>
 			) : (
 				<>
-					{isDyslexic ? (
-						<Suspense fallback={`🔥`}>
+					{isDyslexic && isVisible ? (
+						<Suspense fallback={<div>🔥 loading div same style as integergrid</div>}>
 							<IconGrid icon={icon} firstNum={firstNum} secondNum={secondNum} solution={solution} />
 						</Suspense>
 					) : null}
