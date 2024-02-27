@@ -1,8 +1,5 @@
 //ToDo:
 
-// DOCUMENT:  lazy load issue, needed to add isVisible toggle state variable to isolate the suspence to only those that are in view. Significantly enhanced performance on mobile.
-// try out lazy from react, but only suspend when the slide is in view. Try to tap into slidesInView... if slidesInView < 2, then toggle isVisible hook and render the icongrid... or something like that.
-
 // now that performance is better on mobile, add animations to grid icons back in?
 
 // add 2 more themes
@@ -39,6 +36,7 @@
 // make breakpoint mixins use sass variables
 // remove unnecessary font size variables
 // remove comments and console logs
+// remove commented out animation styles
 // consolidate text sizes and add for 16rem
 // try out range syntax in media queries: https://www.bram.us/2021/10/26/media-queries-level-4-media-query-range-contexts/
 

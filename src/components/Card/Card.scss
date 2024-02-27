@@ -67,25 +67,27 @@
 		opacity: 1;
 	}
 
+	// CELL ANIMATION EXPERIMENT BELOW
 	// .is-snapped & {
-	//   @for $i from 1 through 100 {
-	//     .cell:nth-child(#{$i}) {
-	//       opacity: 1;
+	// 	// @for $i from 1 through 100 {
+	// 	// 	.cell:nth-child(#{$i}) {
+	// 	// 		opacity: 1;
 
-	//       @media (prefers-reduced-motion: no-preference) {
-	//         transform: translateY(0);
-	//         transition-delay: var(--duration-md) + ($i * 12ms);
-	//       }
-	//     }
-	//   }
-	//   // .integerGrid {
-	//   //   opacity: 1;
-	//   //   // border: 1px solid red;
+	// 	// 		@media (prefers-reduced-motion: no-preference) {
+	// 	// 			transform: translateY(0);
+	// 	// 			transition-delay: calc(var(--duration-md) + ($i * 12ms));
+	// 	// 		}
+	// 	// 	}
+	// 	// }
+	// 	.integerGrid {
+	// 		opacity: 1;
+	// 		// border: 1px solid red;
 
-	//   //   @media (prefers-reduced-motion: no-preference) {
-	//   //     transform: translateY(0);
-	//   //   }
-	//   // }
+	// 		@media (prefers-reduced-motion: no-preference) {
+	// 			transform: translateX(0);
+	// 			// transition-delay: var(--duration-md);
+	// 		}
+	// 	}
 	// }
 
 	&.selected {
@@ -141,11 +143,12 @@
 	//Todo: this opacity transition is terrible on ios and safari. Making it full opacity all the time will be better on these browsers. But you lose some nice polish. Is there a better way?
 	// opacity: 0;
 	opacity: 1;
-	transition: opacity var(--duration-md) ease-out var(--duration-md);
+	// transition: opacity var(--duration-md) ease-out var(--duration-xs);
+	// transition-delay: var(--duration-xs);
 
-	.is-snapped & {
-		opacity: 1;
-	}
+	// .is-snapped & {
+	// 	opacity: 1;
+	// }
 }
 
 .cell {
@@ -161,8 +164,7 @@
 	// font-size: var(--text-md);
 	// opacity: 0;
 	// transform: translateY(2px);
-	// transition: transform var(--duration-sm) ease-out,
-	//   opacity var(--duration-sm) ease-out;
+	// transition: transform var(--duration-sm) ease-out, opacity var(--duration-sm) ease-out;
 	// transition-delay: 3s;
 }
 

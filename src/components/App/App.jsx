@@ -14,6 +14,7 @@ import './App.scss';
  * Custom accessibility theming
  * Accessibility enhancements, specifically for keyboard users, dyslexia and prefers-reduced-motion
  * React state management, derived state, lifting state, child to parent communication.
+ * React lazy loading
  * Translating JS data into CSS variables for style manipulation.
  * User research - dyslexia design theory and mathematics
  * User testing - dyslexic user, prefer colors, fonts, icons(1x1 spacing vs spread out), layout
@@ -30,7 +31,8 @@ import './App.scss';
  * Made buttons large so children who are using a mouse and touch screen can interact easier.
  * Make progress bar span as much space as possible to make progress more noticeable with so many cards. Noticing progress is more encouraging than barely making a dent.
  * Accessibility. Tabbing. I had options to utilize arrows as tabbable navigation, however, since each slide item is a focusable element itself, then the user can automatically tab forward and backward through the slides. Incorporating the arrow buttons would be difficult because the user would have to tab into the specific card shown, then tab back to the arrows in order to continue navigating. I decided to keep it simple and not over-complicate the solution.
- * I ran into issues with the dyslexia icons on mobile. I experimented with many options to reduce the choppiness on mobile safari.
+ * I ran into issues with the dyslexia icons on mobile. I experimented with many options to reduce the choppiness on mobile safari but ultimately decided to use React lazy and suspense features to load in the icons only when that specific card is in view. This significantly enhance the experience on mobile and is not smooth for all views and options.
+ * Went back and forth on whether to animate/fade in the icons when a card came into view. Having a subtle fade-in animation looked ok, but ultimately I felt it took away from the snappy-ness and dulled the edge of responsiveness to the users touch when flicking through the deck. I removed the animations in favor of optimal performance and quick response to the user interaction.
  */
 
 /**
