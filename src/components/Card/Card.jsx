@@ -1,12 +1,9 @@
-// import IconGrid from '../IconGrid/IconGrid'; // comment out when attempting lazy.
 import { lazy, Suspense } from 'react';
 import './Card.scss';
 
 const IconGrid = lazy(() => import('../IconGrid/IconGrid'));
 
 export const Card = ({ icon, isSelected, isVisible, firstNum, secondNum, solution, onClick, isDyslexic }) => {
-	// const resultsArr = Array.from({ length: solution }, (_, i) => i);
-
 	return (
 		<button className={`card ${isSelected ? 'selected' : ''}`} onClick={onClick}>
 			{isSelected ? (

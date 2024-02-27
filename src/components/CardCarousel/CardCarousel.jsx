@@ -25,8 +25,7 @@ export const CardCarousel = ({ icon, isDyslexic }) => {
 	const emblaOptions = {
 		duration: 12,
 	};
-	const classNamesOptions = { selected: 'my-selected-class' }; //THIS IS NOT WORKING
-	const [emblaRef, emblaApi] = useEmblaCarousel(emblaOptions, [ClassNames(classNamesOptions)]);
+	const [emblaRef, emblaApi] = useEmblaCarousel(emblaOptions, [ClassNames()]);
 	const [scrollProgress, setScrollProgress] = useState(0);
 	const [selectedId, setSelectedId] = useState(null);
 	const [slidesInView, setSlidesInView] = useState([]);
