@@ -26,26 +26,25 @@ export const CardCarousel = ({ icon, isDyslexic }) => {
 		duration: 12,
 	};
 	const classNamesOptions = { selected: 'my-selected-class' }; //THIS IS NOT WORKING
-
 	const [emblaRef, emblaApi] = useEmblaCarousel(emblaOptions, [ClassNames(classNamesOptions)]);
 	const [scrollProgress, setScrollProgress] = useState(0);
 	const [selectedId, setSelectedId] = useState(null);
 	const [slidesInView, setSlidesInView] = useState([]);
 
-	// const updateSlidesInView = useCallback((emblaApi) => {
-	// 	setSlidesInView(emblaApi.slidesInView());
-	// }, []);
+	const { prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick } = usePrevNextButtons(emblaApi);
 
 	useEffect(() => {
 		if (emblaApi) emblaApi.on('slidesInView', () => setSlidesInView(emblaApi.slidesInView()));
 	}, [emblaApi, setSlidesInView]);
 
+	useEffect(() => {
+		if (emblaApi) emblaApi.emit('slidesInView', () => setSlidesInView(emblaApi.slidesInView()));
+	}, [emblaApi, setSlidesInView, isDyslexic]);
+
 	const onScroll = useCallback((emblaApi) => {
 		const progress = Math.max(0, Math.min(1, emblaApi.scrollProgress()));
 		setScrollProgress(progress * 100);
 	}, []);
-
-	const { prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick } = usePrevNextButtons(emblaApi);
 
 	useEffect(() => {
 		if (!emblaApi) return;
@@ -61,17 +60,17 @@ export const CardCarousel = ({ icon, isDyslexic }) => {
 
 	// Todo: figure out how to round the number or set it so it doesn't wobble back and forth
 	// or +10, +20 +30... fades in and up... like scoring points
-	const progressText = (progress) => {
-		if (progress <= 10) {
-			return '';
-		} else if (progress <= 20) {
-			return 'First 10 Down!';
-		} else if (progress <= 30) {
-			return 'Keep Going!';
-		} else if (progress <= 50) {
-			return '1/2 way there';
-		}
-	};
+	// const progressText = (progress) => {
+	// 	if (progress <= 10) {
+	// 		return '';
+	// 	} else if (progress <= 20) {
+	// 		return 'First 10 Down!';
+	// 	} else if (progress <= 30) {
+	// 		return 'Keep Going!';
+	// 	} else if (progress <= 50) {
+	// 		return '1/2 way there';
+	// 	}
+	// };
 
 	return (
 		<section className='embla'>

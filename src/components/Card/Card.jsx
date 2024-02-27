@@ -17,7 +17,7 @@ export const Card = ({ icon, isSelected, isVisible, firstNum, secondNum, solutio
 			) : (
 				<>
 					{isDyslexic && isVisible ? (
-						<Suspense fallback={<div>🔥 loading div same style as integergrid</div>}>
+						<Suspense>
 							<IconGrid icon={icon} firstNum={firstNum} secondNum={secondNum} solution={solution} />
 						</Suspense>
 					) : null}
