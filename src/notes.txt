@@ -41,6 +41,7 @@
 // try out range syntax in media queries: https://www.bram.us/2021/10/26/media-queries-level-4-media-query-range-contexts/
 
 // NICE TO HAVE / ENHANCEMENTS
+// Add the ability to work on specific numbers like “4”’s and only render a list that has 4s in it.
 // MESSAGING: design where occurs. tune up progress success messaging. glitches back and fourth... maybe round the number up with ceiling to make it exact, or set to 10.5? Could also add a callback timer function to wait a second before applying. too fluid at the moment, the text bounces back and forth between text. Also animate this text in and have it disappear again. Don't want to disappear too quickly... kids can't read that fast, can't be like subtitles, need time to process the words.
 // controls space could be used to fade in/out motivational messages?
 // add gradient to give background some dimension. Like a back wall and floor corner effect. FOR EXAMPLE:
