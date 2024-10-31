@@ -165,8 +165,11 @@
 
 	@include utils.fluid-type;
 	place-self: center;
+	width: 100%;
 
 	[data-accessibility-theme='dyslexic'] & {
+		width: initial;
+
 		&.front {
 			--font-size-min: var(--text-6xl);
 			--font-size-fluid: 20cqi;
