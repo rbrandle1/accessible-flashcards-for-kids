@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import './CardCarousel.scss';
 import useEmblaCarousel from 'embla-carousel-react';
 import ClassNames from 'embla-carousel-class-names';
@@ -33,25 +33,32 @@ export const CardCarousel = ({ icon, isDyslexic }) => {
 	const { prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick } = usePrevNextButtons(emblaApi);
 
 	useEffect(() => {
-		if (emblaApi) emblaApi.on('slidesInView', () => setSlidesInView(emblaApi.slidesInView()));
-	}, [emblaApi, setSlidesInView]);
+		if (!emblaApi) return;
 
-	useEffect(() => {
-		if (emblaApi) emblaApi.emit('slidesInView', () => setSlidesInView(emblaApi.slidesInView()));
-	}, [emblaApi, setSlidesInView, isDyslexic]);
+		const updateSlidesInView = () => setSlidesInView(emblaApi.slidesInView());
+		emblaApi.on('slidesInView', updateSlidesInView);
+		emblaApi.emit('slidesInView', updateSlidesInView);
 
-	const onScroll = useCallback((emblaApi) => {
-		const progress = Math.max(0, Math.min(1, emblaApi.scrollProgress()));
-		setScrollProgress(progress * 100);
-	}, []);
+		return () => emblaApi.off('slidesInView', updateSlidesInView);
+	}, [emblaApi, isDyslexic]);
 
 	useEffect(() => {
 		if (!emblaApi) return;
 
-		onScroll(emblaApi);
+		const onScroll = () => {
+			const progress = Math.max(0, Math.min(1, emblaApi.scrollProgress()));
+			setScrollProgress(progress * 100);
+		};
+
+		onScroll();
 		emblaApi.on('reInit', onScroll);
 		emblaApi.on('scroll', onScroll);
-	}, [emblaApi, onScroll]);
+
+		return () => {
+			emblaApi.off('reInit', onScroll);
+			emblaApi.off('scroll', onScroll);
+		};
+	}, [emblaApi]);
 
 	const handleCardClick = (id) => {
 		setSelectedId(id !== selectedId ? id : null);
