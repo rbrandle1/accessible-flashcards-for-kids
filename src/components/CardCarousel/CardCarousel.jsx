@@ -72,15 +72,26 @@ export const CardCarousel = ({ icon, isDyslexic }) => {
 	// };
 
 	return (
-		<section className='embla'>
+		<section className='embla' aria-label='Flashcards'>
 			<div className='viewport' ref={emblaRef}>
-				<ul className='slidesContainer' role='listbox'>
+				<ul
+					className='slidesContainer'
+					role='listbox'
+					aria-label='Multiplication flashcards carousel'
+					aria-description='Navigate through flashcards using tab key and flip the cards using space or enter keys.'
+				>
 					{cards.length > 0 &&
 						cards.map(({ firstNum, secondNum, result }, i) => {
 							const isSelected = i === selectedId;
 
 							return (
-								<li className='slide' role='option' key={i}>
+								<li
+									className='slide'
+									role='option'
+									key={i}
+									aria-selected={isSelected}
+									aria-label={isSelected ? `Answer: ${result}` : `${firstNum} times ${secondNum}`}
+								>
 									<article>
 										<Card
 											icon={icon}
