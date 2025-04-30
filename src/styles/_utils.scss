@@ -3,7 +3,7 @@
 		&#{$selector} {
 			@content;
 		}
-		@for $i from 0 to length($extraSelectors) {
+		@each $selector in $extraSelectors {
 			&#{$extraSelectors} {
 				@content;
 			}
