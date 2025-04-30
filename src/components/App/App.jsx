@@ -21,14 +21,18 @@ const App = () => {
 		setDataAccessibilityTheme(dataAccessibilityTheme !== 'dyslexic' ? 'dyslexic' : '');
 	};
 
+	const handleThemeChange = (e) => {
+		setDataTheme(e.target.value);
+	};
+
 	return (
 		<div className='app'>
 			<div className='wrapper'>
 				<div className='controls'>
-					<Switch label='Optimize for Dyslexia' onChange={() => handleAccessibilityTheme()} />
+					<Switch label='Optimize for Dyslexia' onChange={handleAccessibilityTheme} />
 					<div className='iconSelect'>
 						<label htmlFor='icon-select'>Theme</label>
-						<select id='icon-select' name='icon' value={dataTheme} onChange={(e) => setDataTheme(e.target.value)}>
+						<select id='icon-select' name='icon' value={dataTheme} onChange={handleThemeChange}>
 							<option value='🚀'>🚀</option>
 							<option value='🤖'>🤖</option>
 						</select>
