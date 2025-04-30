@@ -128,8 +128,12 @@
 // Integer styles
 // ===============================
 .integerEquation {
-	margin-top: auto;
+	align-self: end;
 	justify-self: center;
+
+	&:not(.selected) {
+		text-wrap: nowrap;
+	}
 }
 
 .integer {
