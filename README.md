@@ -1,74 +1,63 @@
-# accessible-flashcards-for-kids
+# Accessible Multiplication Flashcards for Kids
 
-Created with CodeSandbox and migrated to a github project.
+An accessible React application providing multiplication flashcards with dyslexia-friendly features and customizable themes.
 
-# Getting Started with Create React App
+## Features
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- Designed layout, typography, and color systems
+- SCSS includes, use, prepped for CSS modules
+- SCSS design system, CSS custom properties, mixins, functions
+- SASS for loop
+- CSS animation
+- Custom React components and third-party component integration
+- Custom accessibility theming
+- Accessibility enhancements for keyboard users, dyslexia and prefers-reduced-motion
+- React state management, derived state, lifting state, child-to-parent communication
+- React lazy loading
+- Translating JS data into CSS variables for style manipulation
+- User research - dyslexia design theory and mathematics
+- User testing with dyslexic users (colors, fonts, icons, layout preferences)
+- Fluid typography using container queries techniques
 
-## Available Scripts
+## Getting Started
 
-In the project directory, you can run:
+1. Clone the repository
+2. Install dependencies:
+   ```
+   npm install
+   ```
+3. Start the development server:
+   ```
+   npm start
+   ```
 
-### `npm start`
+## Design Decisions & Problem Solving
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Focused UI**: Used a carousel instead of a grid to help users focus on one problem at a time, reducing distraction
+- **Global Theming**: Created a global level design system at the DOM level rather than using React-specific implementation
+- **Typography**: Carefully selected fonts for readability (avoided fonts resembling "For Dummies" books)
+- **Color Theming**: Utilized native HTML emoji colors for well-balanced, contrasted, and readable color themes
+- **Accessibility**:
+  - Large buttons for easier interaction with mouse or touch
+  - Maximized progress bar visibility to encourage continued engagement
+  - Optimized tab navigation for natural slide progression
+  - Used React lazy loading to improve performance for dyslexia icons on mobile
+  - Prioritized performance and responsiveness over animations
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Resources
 
-### `npm test`
+### Dyslexia Design Resources
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [Designing for Dyslexia](https://uxplanet.org/designing-for-dyslexia-6d12e8c41cd7)
+- [How to Design for Users with Dyslexia](https://www.prologic-technologies.com/blog/how-to-design-for-users-with-dyslexia)
+- [Supporting Dyslexia in the Math Classroom](https://mathsnoproblem.com/blog/learner-focus/supporting-dyslexia-maths-classroom)
+- [Dyslexia: Mastering Math](https://homeschoolingwithdyslexia.com/dyslexia-mastering-math/)
 
-### `npm run build`
+### Other Resources
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [Embla Carousel](https://www.embla-carousel.com/)
+- [Container Query Units and Fluid Typography](https://moderncss.dev/container-query-units-and-fluid-typography/) by Stephanie Eckles
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## License
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+&copy; 2024 Ryan Brandle
