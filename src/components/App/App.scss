@@ -4,6 +4,9 @@
 	--app-bar-height: 4vh;
 	--app-header-height: calc(var(--app-bar-height) + var(--app-controls-height, 0px));
 
+	display: grid;
+	height: 100vh;
+
 	@media screen and (max-width: 499px) {
 		--app-controls-height: 80px;
 	}
@@ -11,9 +14,6 @@
 	@media screen and (min-width: 500px) and (max-width: 1023px) {
 		--app-controls-height: 128px;
 	}
-
-	display: grid;
-	height: 100vh;
 }
 
 .wrapper {
@@ -126,17 +126,6 @@
 	margin-top: var(--space-base);
 	text-shadow: 3px 3px 0px var(--theme-color-body-text);
 	white-space: nowrap;
-
-	// example below
-	// text-shadow: 3px 3px 0px var(--theme-color-body-text);
-	// background-image: url('https://3.bp.blogspot.com/-6Cw056uPYug/UjS0rCZ8x0I/AAAAAAAABAE/nGHZHmFmPzs/s1600/234.jpg');
-	// background-position: 0 35%;
-
-	// color: transparent;
-	// padding: 20px 40px;
-	// -webkit-background-clip: text;
-	// -moz-background-clip: text;
-	// background-clip: text;
 
 	@media screen and (min-width: 768px) {
 		--font-size-fluid: 11cqi;

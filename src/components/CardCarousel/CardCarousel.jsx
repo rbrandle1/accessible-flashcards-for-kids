@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import './CardCarousel.scss';
 import useEmblaCarousel from 'embla-carousel-react';
 import ClassNames from 'embla-carousel-class-names';
@@ -33,31 +33,38 @@ export const CardCarousel = ({ icon, isDyslexic }) => {
 	const { prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick } = usePrevNextButtons(emblaApi);
 
 	useEffect(() => {
-		if (emblaApi) emblaApi.on('slidesInView', () => setSlidesInView(emblaApi.slidesInView()));
-	}, [emblaApi, setSlidesInView]);
+		if (!emblaApi) return;
 
-	useEffect(() => {
-		if (emblaApi) emblaApi.emit('slidesInView', () => setSlidesInView(emblaApi.slidesInView()));
-	}, [emblaApi, setSlidesInView, isDyslexic]);
+		const updateSlidesInView = () => setSlidesInView(emblaApi.slidesInView());
+		emblaApi.on('slidesInView', updateSlidesInView);
+		emblaApi.emit('slidesInView', updateSlidesInView);
 
-	const onScroll = useCallback((emblaApi) => {
-		const progress = Math.max(0, Math.min(1, emblaApi.scrollProgress()));
-		setScrollProgress(progress * 100);
-	}, []);
+		return () => emblaApi.off('slidesInView', updateSlidesInView);
+	}, [emblaApi, isDyslexic]);
 
 	useEffect(() => {
 		if (!emblaApi) return;
 
-		onScroll(emblaApi);
+		const onScroll = () => {
+			const progress = Math.max(0, Math.min(1, emblaApi.scrollProgress()));
+			setScrollProgress(progress * 100);
+		};
+
+		onScroll();
 		emblaApi.on('reInit', onScroll);
 		emblaApi.on('scroll', onScroll);
-	}, [emblaApi, onScroll]);
+
+		return () => {
+			emblaApi.off('reInit', onScroll);
+			emblaApi.off('scroll', onScroll);
+		};
+	}, [emblaApi]);
 
 	const handleCardClick = (id) => {
 		setSelectedId(id !== selectedId ? id : null);
 	};
 
-	// Todo: figure out how to round the number or set it so it doesn't wobble back and forth
+	// Todo: Future feature:
 	// or +10, +20 +30... fades in and up... like scoring points
 	// const progressText = (progress) => {
 	// 	if (progress <= 10) {
@@ -72,15 +79,26 @@ export const CardCarousel = ({ icon, isDyslexic }) => {
 	// };
 
 	return (
-		<section className='embla'>
+		<section className='embla' aria-label='Flashcards'>
 			<div className='viewport' ref={emblaRef}>
-				<ul className='slidesContainer' role='listbox'>
+				<ul
+					className='slidesContainer'
+					role='listbox'
+					aria-label='Multiplication flashcards carousel'
+					aria-description='Navigate through flashcards using tab key and flip the cards using space or enter keys.'
+				>
 					{cards.length > 0 &&
 						cards.map(({ firstNum, secondNum, result }, i) => {
 							const isSelected = i === selectedId;
 
 							return (
-								<li className='slide' role='option' key={i}>
+								<li
+									className='slide'
+									role='option'
+									key={i}
+									aria-selected={isSelected}
+									aria-label={isSelected ? `Answer: ${result}` : `${firstNum} times ${secondNum}`}
+								>
 									<article>
 										<Card
 											icon={icon}
@@ -107,10 +125,6 @@ export const CardCarousel = ({ icon, isDyslexic }) => {
 			</div>
 			<PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
 			<NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
-			{/* <div className='buttonContainer'>
-				<PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
-				<NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
-			</div> */}
 		</section>
 	);
 };

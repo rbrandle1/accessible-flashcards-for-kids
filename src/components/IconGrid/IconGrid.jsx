@@ -4,7 +4,7 @@ export const IconGrid = ({ icon, firstNum, secondNum, solution }) => {
 	const resultsArr = Array.from({ length: solution }, (_, i) => i);
 
 	return (
-		<div className='gridContainer'>
+		<div className='gridContainer' aria-hidden='true'>
 			<div
 				className='integerGrid'
 				style={{

@@ -8,7 +8,9 @@ export const Card = ({ icon, isSelected, isVisible, firstNum, secondNum, solutio
 		<button className={`card ${isSelected ? 'selected' : ''}`} onClick={onClick}>
 			{isSelected ? (
 				<>
-					<span className='selectedIcon'>{icon}</span>
+					<span className='selectedIcon' aria-hidden='true'>
+						{icon}
+					</span>
 					<div className='integer'>{solution}</div>
 				</>
 			) : (
