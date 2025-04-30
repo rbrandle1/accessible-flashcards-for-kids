@@ -77,7 +77,6 @@
 .slide {
 	flex: 0 0 100%;
 	min-width: 0;
-	// transition: transform 5s ease-out;
 
 	article {
 		--card-vw: 50vw;
@@ -209,13 +208,9 @@
 	border-bottom-right-radius: 360px;
 
 	&::after {
-		// clapping hands, thumbs up, encouragment
-		// updates some variable custom attribute text with js
-		// content: "Keep it up!";
 		content: attr(data-progress-text);
 		position: absolute;
 		right: var(--space-base);
-		// top calc isn't working...
 		top: calc(50% - (var(--progress-height) / 2));
 		z-index: 999;
 	}

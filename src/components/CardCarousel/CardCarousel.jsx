@@ -57,7 +57,7 @@ export const CardCarousel = ({ icon, isDyslexic }) => {
 		setSelectedId(id !== selectedId ? id : null);
 	};
 
-	// Todo: figure out how to round the number or set it so it doesn't wobble back and forth
+	// Todo: Future feature:
 	// or +10, +20 +30... fades in and up... like scoring points
 	// const progressText = (progress) => {
 	// 	if (progress <= 10) {
@@ -107,10 +107,6 @@ export const CardCarousel = ({ icon, isDyslexic }) => {
 			</div>
 			<PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
 			<NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
-			{/* <div className='buttonContainer'>
-				<PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
-				<NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
-			</div> */}
 		</section>
 	);
 };
