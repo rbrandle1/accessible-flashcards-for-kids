@@ -4,6 +4,7 @@
 	"description": "",
 	"keywords": [],
 	"main": "src/index.js",
+	"homepage": "/flashcard-app",
 	"dependencies": {
 		"embla-carousel-class-names": "^8.0.0-rc19",
 		"embla-carousel-react": "^8.0.0-rc19",
