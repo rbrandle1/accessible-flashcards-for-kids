@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Switch from '../Switch/Switch';
 import CardCarousel from '../CardCarousel/CardCarousel';
 import './App.scss';
-
+import { Analytics } from '@vercel/analytics/react';
 const App = () => {
 	const [dataAccessibilityTheme, setDataAccessibilityTheme] = useState('');
 	const [dataTheme, setDataTheme] = useState('🤖');
@@ -56,6 +56,7 @@ const App = () => {
 					&copy;&nbsp;2024&nbsp;Ryan&nbsp;Brandle.
 				</footer>
 			</div>
+			<Analytics />
 		</div>
 	);
 };

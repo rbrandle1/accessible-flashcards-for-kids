@@ -4,7 +4,9 @@
 	"description": "",
 	"keywords": [],
 	"main": "src/index.js",
+	"homepage": "/flashcard-app",
 	"dependencies": {
+		"@vercel/analytics": "^1.5.0",
 		"embla-carousel-class-names": "^8.0.0-rc19",
 		"embla-carousel-react": "^8.0.0-rc19",
 		"loader-utils": "3.2.1",
